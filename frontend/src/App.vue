@@ -1,27 +1,29 @@
 <template>
-  <div>
-    <LoginPage/>
+  <div id="app">
+    <LoginPage v-if="!isLoggedIn" @login="handleLogin" />
+    <DashboardPage v-if="isLoggedIn" />
   </div>
 </template>
 
 <script>
-import LoginPage from './components/LoginPage.vue'
+import LoginPage from './components/LoginPage.vue';
+import DashboardPage from './components/DashboardPage.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isLoggedIn: false,  
+    };
+  },
   components: {
-    LoginPage
+    LoginPage,
+    DashboardPage,
+  },
+  methods: {
+    handleLogin() {
+      this.isLoggedIn = true;  
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
