@@ -1,11 +1,9 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('./adminpanel-b75bd-firebase-adminsdk-zlc2f-9ce2c78ed6.json');
+const serviceAccount = require('./adminpanel-b75bd-firebase-adminsdk-zlc2f-8e98b44bb5.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://adminpanel-b75bd.firebaseio.com'
+  databaseURL: 'https://adminpanel-b75bd.firebaseio.com' // Make sure this URL matches your Firebase project
 });
 
-const db = admin.firestore();
-
-module.exports = db;
+module.exports = admin; // Export the initialized admin instance
